@@ -7,7 +7,7 @@ pipeline {
         stage('Build'){
           steps{
             container('dind'){
-              sh  'docker build -t jonyjalfon94/java-docker:$BUILD_NUMBER --target test .'
+              sh  'docker build -t jonyjalfon94/java-docker:$BUILD_NUMBER'
             }
           }
         }
