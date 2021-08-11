@@ -15,7 +15,7 @@ pipeline {
             steps{
                 container('dind'){
                     withCredentials([usernamePassword(credentialsId: 'test-creds-dockerhub', passwordVariable: 'docker-password', usernameVariable: 'docker-username')]) {
-                        sh 'docker login -u $docker-username -p docker-password'
+                        sh 'docker login -u $docker-username -p $docker-password'
                         sh 'docker push jonyjalfon94/java-docker:$BUILD_NUMBER'
                     }
                 }
