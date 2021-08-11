@@ -14,8 +14,8 @@ pipeline {
         stage("Push image to DockerHub"){
             steps{
                 container('dind'){
-                    withCredentials([usernamePassword(credentialsId: 'test-creds-dockerhub', passwordVariable: 'docker-password', usernameVariable: 'docker-username')]) {
-                        sh 'docker login -u $docker-username -p $docker-password'
+                    withCredentials([usernamePassword(credentialsId: 'test-creds-dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                         sh 'docker push jonyjalfon94/java-docker:$BUILD_NUMBER'
                     }
                 }
